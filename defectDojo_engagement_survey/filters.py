@@ -1,5 +1,4 @@
 from django.utils.translation import ugettext_lazy as _
-from django.utils import six
 from django_filters import FilterSet, CharFilter, BooleanFilter, ChoiceFilter
 from django.contrib.contenttypes.models import ContentType
 
@@ -36,7 +35,7 @@ class QuestionTypeFilter(ChoiceFilter):
 
     def __init__(self, *args, **kwargs):
         kwargs['choices'] = [
-            (key, value[0]) for key, value in six.iteritems(self.options)]
+            (key, value[0]) for key, value in items(self.options)]
         super(QuestionTypeFilter, self).__init__(*args, **kwargs)
 
     def filter(self, qs, value):
